@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Rema1000.Data;
+using Rema1000.Services.ProductService;
 
 namespace Rema1000
 {
@@ -28,6 +31,10 @@ namespace Rema1000
         {
 
             services.AddControllers();
+            services.AddDbContext<Rema1000Context>(opt =>
+                opt.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IProductService, ProductSqlService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rema1000", Version = "v1" });
