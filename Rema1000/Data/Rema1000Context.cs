@@ -18,7 +18,6 @@ namespace Rema1000.Data
         public  DbSet<ContactPerson> ContactPersons { get; set; }
         public DbSet<MeasurementUnit> MeasurementUnits { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
     }
 }

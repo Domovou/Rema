@@ -22,44 +22,64 @@ namespace Rema1000.Controllers
             _product = product;
         }
 
+       
         // GET: api/<ProductController>
         [HttpGet]
-        public async Task<IEnumerable<Product>>  GetProduct()
+        public async Task<IEnumerable<Product>> GetProduct()
         {
            return await _product.GetAllProducts();
 
         }
-        [HttpGet("{productType}")]
-        public IEnumerable<ProductType> GetProductType(ProductType productType)
-        {
-           // return _product.GetAllProducts();
-           throw new NotImplementedException();
-        }
-
+       
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Product>> GetProductById(Guid id)
         {
-            return "value";
+            return await _product.GetProductById(id);
+        }
+
+        // GET api/<ProductController>/product/name
+        [HttpGet("product/{categoryName}")]
+        public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
+        {
+            return await _product.GetAllProductsByCategory(categoryName);
         }
 
         // POST api/<ProductController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Create([FromBody] Product product)
         {
+            if (ModelState.IsValid)
+            {
+                await _product.CreateProduct(product);
+            }
+
+            return Created($"api/product", null);
         }
 
         // PUT api/<ProductController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] Product productForUpdate)
         {
-        }
+            if (id != productForUpdate.ProductId)
+            {
+                return BadRequest();
+            }
 
+            if (ModelState.IsValid)
+            {
+                await _product.UpdateProduct(productForUpdate);
+            }
+
+            return NoContent();
+        }
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteProduct(Guid id)
         {
+            await _product.DeleteProduct(id);
+            return NoContent();
         }
     }
 }

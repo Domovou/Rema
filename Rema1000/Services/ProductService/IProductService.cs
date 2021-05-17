@@ -10,11 +10,10 @@ namespace Rema1000.Services.ProductService
     public interface IProductService
     {
         Task<IEnumerable<Product>> GetAllProducts();
-        Product GetProductById(int id);
-        Product GetProductByName(int id);
-        void CreateProduct(Product createProduct);
-        void UpdateProduct(Product updateProduct);
-        void DeleteProduct(int id);
-       // ProductSerialNumbers GetNumberBySerialNumber(Guid number);
+        Task<IEnumerable<Product>> GetAllProductsByCategory(string categoryName);
+        Task<Product>GetProductById(Guid id);
+        Task CreateProduct(Product createProduct);
+        Task UpdateProduct(Product updateProduct);
+        Task DeleteProduct(Guid id);
     }
 }

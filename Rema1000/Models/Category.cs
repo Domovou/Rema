@@ -9,9 +9,10 @@ namespace Rema1000.Models
     public class Category
     {
         [Key]
-        public Guid CategoryId { get; set; }
-        public string CategotyName { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public string CategoryDescription{ get; set; }
-        
+        public Category ParentCategory { get; set; }
+
     }
 }

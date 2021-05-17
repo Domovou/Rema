@@ -15,5 +15,7 @@ namespace Rema1000.Models
         public int UtininStock { get; set; }
         public MeasurementUnit MeasurementUnit { get; set; }
         public Supplier ProductSupplier { get; set; }
+        public Category ProductCategory { get; set; }
+
     }
 }

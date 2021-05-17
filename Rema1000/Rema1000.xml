@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rema1000</name>
+    </assembly>
+    <members>
+        <member name="T:Rema1000.Controllers.ProductController">
+            <summary>Controller responsible for GET/POST/DELETE for managing Products </summary>
+        </member>
+    </members>
+</doc>

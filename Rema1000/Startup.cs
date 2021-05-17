@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Rema1000
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,7 +39,10 @@ namespace Rema1000
             services.AddScoped<IProductService, ProductSqlService>();
             services.AddSwaggerGen(c =>
             {
+
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rema1000", Version = "v1" });
+                var filePath = Path.Combine(AppContext.BaseDirectory, "Rema1000.xml");
+                c.IncludeXmlComments(filePath, includeControllerXmlComments: true);
             });
         }
 
