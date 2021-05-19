@@ -12,35 +12,10 @@ namespace Rema1000.Services.ProductService
     public class ProductSqlService : IProductService
     {
         private readonly Rema1000Context _context;
-        private readonly IEnumerable<Product> _products;
 
         public ProductSqlService(Rema1000Context context)
         {
             _context = context;
-            _products = new List<Product>
-            {
-                new Product
-                {
-                    Price = 10,
-                    ProductId = new Guid("c71488b2-dd95-4a26-899c-7d258bdd6915"),
-                    ProductDescription = "test1",
-                    ProductName = "MyTest1"
-                },
-                new Product
-                {
-                    Price = 20,
-                    ProductId = new Guid("c71488b2-dd95-4a26-899c-7d258bdd6916"),
-                    ProductDescription = "test2",
-                    ProductName = "MyTest2"
-                },
-                new Product
-                {
-                    Price = 30,
-                    ProductId = new Guid("c71488b2-dd95-4a26-899c-7d258bdd6917"),
-                    ProductDescription = "test3",
-                    ProductName = "MyTest3"
-                }
-            };
         }
 
         public async Task<IEnumerable<Product>> GetAllProducts()

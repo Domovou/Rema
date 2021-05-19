@@ -14,7 +14,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Rema1000.Data;
+using Rema1000.Services.CaategoryServices;
 using Rema1000.Services.ProductService;
+using Rema1000.Services.SupplierService;
 
 namespace Rema1000
 {
@@ -37,6 +39,8 @@ namespace Rema1000
                 opt.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IProductService, ProductSqlService>();
+            services.AddScoped<ICategoryService, CategorySqlService>();
+            services.AddScoped<ISupplierService, SupplierSqlService>();
             services.AddSwaggerGen(c =>
             {
 
