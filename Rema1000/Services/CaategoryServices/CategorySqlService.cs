@@ -25,7 +25,7 @@ namespace Rema1000.Services.CaategoryServices
 
         public async Task<Category> GetCategoryById(int id)
         {
-            return await _context.Categories.FirstOrDefaultAsync(p => p.CategoryId == id);
+            return await _context.Categories.Include(x=>x.ParentCategory.ParentCategory).FirstOrDefaultAsync(p => p.CategoryId == id);
         }
 
         public async Task CreateCategory(Category categoryToCreate)

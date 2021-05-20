@@ -38,9 +38,11 @@ namespace Rema1000
             services.AddDbContext<Rema1000Context>(opt =>
                 opt.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+          
             services.AddScoped<IProductService, ProductSqlService>();
             services.AddScoped<ICategoryService, CategorySqlService>();
             services.AddScoped<ISupplierService, SupplierSqlService>();
+
             services.AddSwaggerGen(c =>
             {
 
@@ -54,7 +56,6 @@ namespace Rema1000
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
           
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

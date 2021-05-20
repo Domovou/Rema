@@ -26,7 +26,7 @@ namespace Rema1000.Services.ProductService
 
         public async Task<IEnumerable<Product>> GetAllProductsByCategory(string categoryName)
         {
-            List<Product> products = await _context.Products.ToListAsync();
+            List<Product> products = await _context.Products.Include(x=> x.ProductCategory).ToListAsync();
             List<Product> temList = new List<Product>();
             foreach (Product pr in products)
             {

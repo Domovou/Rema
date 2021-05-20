@@ -10,11 +10,11 @@ namespace Rema1000.Models
     {
         [Key] 
         public Guid ContactPersonId { get; set; }
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         public Supplier Supplier { get; set; }
 
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Rema1000.Data;
@@ -17,10 +18,10 @@ namespace Rema1000.Services.SupplierService
             _context = context;
         }
 
-        public async Task<IEnumerable<Supplier>> GetAllSuppliers()
+       public async Task<IEnumerable<Supplier>> GetAllSuppliers()
         {
-            // return  _products;
-            return await _context.Suppliers.ToListAsync();
+            return  await _context.Suppliers.Include(x=>x.SupplierContactPersons).ToListAsync();
+
         }
         //GetSupplierByTelephone
         public async Task<Supplier> GetSupplierById(Guid id)
