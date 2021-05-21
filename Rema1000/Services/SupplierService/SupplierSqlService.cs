@@ -24,10 +24,10 @@ namespace Rema1000.Services.SupplierService
 
         }
         //GetSupplierByTelephone
-        public async Task<Supplier> GetSupplierById(Guid id)
+        public async Task<Supplier> GetSupplierByCvrNumber(string id)
         {
             //   return _products.FirstOrDefault(p => p.ProductId == id);
-            return await _context.Suppliers.FirstOrDefaultAsync(s => s.SupplierId == id);
+            return await _context.Suppliers.FirstOrDefaultAsync(s => s.CvrNumber == id);
         }
 
         

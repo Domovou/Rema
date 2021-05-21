@@ -10,7 +10,7 @@ namespace Rema1000.Services.SupplierService
     {
 
         Task<IEnumerable<Supplier>> GetAllSuppliers();
-        Task<Supplier> GetSupplierById(Guid id);
+        Task<Supplier> GetSupplierByCvrNumber(string id);
         Task CreateSupplier(Supplier createSupplier);
         Task UpdateSupplier(Supplier updateSupplier);
         Task DeleteSupplier(Guid id);

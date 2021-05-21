@@ -6,47 +6,47 @@ using System.Threading.Tasks;
 using Rema1000.Models;
 using Rema1000.Services.ProductService;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Rema1000.Controllers
-{    /// <summary>Controller responsible for GET/POST/DELETE for managing Products </summary>
-
+{       
+    ///<summary>Controller responsible for handling products </summary>
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private IProductService _product;
+        private readonly IProductService _product;
 
         public ProductController(IProductService product)
         {
             _product = product;
         }
 
-       
-        // GET: api/<ProductController>
+
+        ///<summary>Gets the information of all products</summary>
         [HttpGet]
         public async Task<IEnumerable<Product>> GetProduct()
         {
            return await _product.GetAllProducts();
 
         }
-       
 
-        // GET api/<ProductController>/5
+
+        ///<summary>Gets the information on the product of a given id</summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProductById(Guid id)
         {
             return await _product.GetProductById(id);
         }
 
-        // GET api/<ProductController>/product/name
+        ///<summary>Gets the all products of the given Category</summary>
         [HttpGet("product/{categoryName}")]
         public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
         {
             return await _product.GetAllProductsByCategory(categoryName);
         }
 
-        // POST api/<ProductController>
+        /// <summary>This POST method creates a new Product </summary>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Product product)
         {
@@ -58,7 +58,7 @@ namespace Rema1000.Controllers
             return Created($"api/product", null);
         }
 
-        // PUT api/<ProductController>/5
+        ///<summary>This PUT method updates the product with the given id </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] Product productForUpdate)
         {
@@ -74,7 +74,7 @@ namespace Rema1000.Controllers
 
             return NoContent();
         }
-        // DELETE api/<ProductController>/5
+        /// <summary>This DELETE method deletes the product with the given id </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(Guid id)
         {

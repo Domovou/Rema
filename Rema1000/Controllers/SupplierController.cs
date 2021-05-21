@@ -9,11 +9,13 @@ using Rema1000.Services.SupplierService;
 
 namespace Rema1000.Controllers
 {
+    ///<summary>Controller responsible for handling Suppliers </summary>
+
     [Route("api/[controller]")]
     [ApiController]
     public class SupplierController : ControllerBase
     {
-        private ISupplierService _supplierService;
+        private readonly ISupplierService _supplierService;
 
         public SupplierController(ISupplierService supplierService)
         {
@@ -21,25 +23,21 @@ namespace Rema1000.Controllers
         }
 
 
-        // GET: api/<ProductController>
+        ///<summary>Gets the all Suppliers</summary>
         [HttpGet]
         public async Task<IEnumerable<Supplier>> GetSuppliers()
         {
             return await _supplierService.GetAllSuppliers();
-
         }
 
-
-        // GET api/<ProductController>/5
+        ///<summary>Gets the information on the Supplier of a given Cvr number</summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Supplier>> GetSupplierById(Guid id)
+        public async Task<ActionResult<Supplier>> GetSupplierById(string id)
         {
-            return await _supplierService.GetSupplierById(id);
+            return await _supplierService.GetSupplierByCvrNumber(id);
         }
 
-        // GET api/<ProductController>/supplierService/name
-
-        // POST api/<ProductController>
+        /// <summary>This POST method creates a new Supplier </summary>
         [HttpPost]
         public async Task<IActionResult> CreateSupplier([FromBody] Supplier supplier)
         {
@@ -51,7 +49,7 @@ namespace Rema1000.Controllers
             return Created($"api/supplierService", null);
         }
 
-        // PUT api/<ProductController>/5
+        ///<summary>This PUT method updates the Supplier with the given id </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateSuppliery(Guid id, [FromBody] Supplier supplierForUpdate)
         {
@@ -67,7 +65,8 @@ namespace Rema1000.Controllers
 
             return NoContent();
         }
-        // DELETE api/<ProductController>/5
+
+        /// <summary>This DELETE method deletes the Supplier with the given id </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSupplier(Guid id)
         {

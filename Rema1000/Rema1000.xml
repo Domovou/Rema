@@ -4,8 +4,62 @@
         <name>Rema1000</name>
     </assembly>
     <members>
+        <member name="T:Rema1000.Controllers.CategoryController">
+            <summary>Controller responsible for handling Categories</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.CategoryController.GetCategory">
+            <summary>Gets the collection of all Categories</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.CategoryController.GetCategoryById(System.Int32)">
+            <summary>Gets the Category by given id </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.CategoryController.CreateCategory(Rema1000.Models.Category)">
+            <summary>This POST method creates a new Category </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.CategoryController.UpdateCategory(System.Int32,Rema1000.Models.Category)">
+            <summary> This PUT method updates the Category with the given id </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.CategoryController.DeleteCategory(System.Int32)">
+            <summary> This DELETE method deletes the product with the given id </summary>
+        </member>
         <member name="T:Rema1000.Controllers.ProductController">
-            <summary>Controller responsible for GET/POST/DELETE for managing Products </summary>
+            <summary>Controller responsible for handling products </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.ProductController.GetProduct">
+            <summary>Gets the information of all products</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.ProductController.GetProductById(System.Guid)">
+            <summary>Gets the information on the product of a given id</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.ProductController.GetProductByCategory(System.String)">
+            <summary>Gets the all products of the given Category</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.ProductController.Create(Rema1000.Models.Product)">
+            <summary>This POST method creates a new Product </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.ProductController.UpdateProduct(System.Guid,Rema1000.Models.Product)">
+            <summary>This PUT method updates the product with the given id </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.ProductController.DeleteProduct(System.Guid)">
+            <summary>This DELETE method deletes the product with the given id </summary>
+        </member>
+        <member name="T:Rema1000.Controllers.SupplierController">
+            <summary>Controller responsible for handling Suppliers </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.SupplierController.GetSuppliers">
+            <summary>Gets the all Suppliers</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.SupplierController.GetSupplierById(System.String)">
+            <summary>Gets the information on the Supplier of a given Cvr number</summary>
+        </member>
+        <member name="M:Rema1000.Controllers.SupplierController.CreateSupplier(Rema1000.Models.Supplier)">
+            <summary>This POST method creates a new Supplier </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.SupplierController.UpdateSuppliery(System.Guid,Rema1000.Models.Supplier)">
+            <summary>This PUT method updates the Supplier with the given id </summary>
+        </member>
+        <member name="M:Rema1000.Controllers.SupplierController.DeleteSupplier(System.Guid)">
+            <summary>This DELETE method deletes the Supplier with the given id </summary>
         </member>
     </members>
 </doc>
